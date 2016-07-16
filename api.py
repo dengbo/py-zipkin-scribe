@@ -117,5 +117,5 @@ class ZipkinApi(object):
         packed_ip = socket.inet_aton(ip)
         return struct.unpack("!i", packed_ip)[0]
 
-
+#the args of the ScribeWriter is the same as your scribe conf, please modify them if your conf is different
 api = ZipkinApi(service_name="test", store=default_store, writer=ScribeWriter(host="127.0.0.1", port=8888))
