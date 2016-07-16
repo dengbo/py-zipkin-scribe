@@ -3,7 +3,7 @@ from api import api as zipkin_api
 from time import time
 from pprint import pprint
 
-trace_id, span_id = zipkin_api.set_data(rpc_name="sql")
+trace_id, span_id = zipkin_api.set_data(rpc_name="sql") #you should use this first, and then record
 zipkin_api.record_event('ss')  # Note duration is in microseconds, as defined by Zipkin
 zipkin_api.record_key_value('lc', "213")  # You can use string, int, long and bool values
 pprint(zipkin_api.test_get_span())
