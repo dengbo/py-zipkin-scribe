@@ -26,7 +26,8 @@ class ZipkinApi(object):
 	    return key
 	return func()
 
-    def set_data(self, rpc_name="unknown", trace_id=None, span_id=None, parent_span_id=None, sampled=True):
+    def set_data(self, service_name="unknown", rpc_name="unknown", trace_id=None, span_id=None, parent_span_id=None, sampled=True):
+	self.endpoint.service_name = service_name
 	trace_id = self._set_not_none(trace_id, default_gen.generate_trace_id)
 	span_id = self._set_not_none(span_id, default_gen.generate_span_id)
 	data = ZipkinData(trace_id, span_id, parent_span_id, sampled, False)
